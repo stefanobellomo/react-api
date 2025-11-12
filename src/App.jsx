@@ -9,10 +9,6 @@ function App() {
 
   useEffect(handleClick, [])
 
-  // useEffect(() => { 
-  //   handleClick() 
-  // }, [])
-
   function handleClick() {
     axios.get(apiActors)
       .then(response => {
@@ -46,7 +42,7 @@ function App() {
                   {/* biografia */}
                   <span>{actor.biography}</span>
                   {/* riconoscimenti */}
-                  <span>{actor.know_for}</span>
+                  <span>Awards: {actor.awards.join(', ')}</span>
                 </p>
               </div>
             </div>
