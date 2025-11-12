@@ -3,9 +3,11 @@ import { useEffect, useState } from "react"
 
 function App() {
 
-  // const apiActresses = 'https://lanciweb.github.io/demo/api/actresses/'
+  const apiActresses = 'https://lanciweb.github.io/demo/api/actresses/'
   const apiActors = 'https://lanciweb.github.io/demo/api/actors/'
   const [actors, setActors] = useState([])
+  const [actresses, setActresses] = useState([])
+  const [everyActors, setEveryActors] = useState([])
 
   useEffect(handleClick, [])
 
@@ -15,11 +17,17 @@ function App() {
         console.log(response.data);
         setActors(response.data)
       })
+    axios.get(apiActresses)
+      .then(response => {
+        console.log(response.data);
+        setActresses(response.data)
+      })
+    const newListActors = [...actors, ...actresses]
+    setEveryActors(newListActors)
+
   }
 
-  console.log(actors);
-
-
+  console.log(everyActors);
 
   return (
     <>
@@ -29,6 +37,7 @@ function App() {
 
         <button className="btn btn-dark" onClick={handleClick}>click me</button>
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+
           {actors.map(actor => (
             <div key={actor.id} className="col">
               <div className="actorsCard">
@@ -47,6 +56,7 @@ function App() {
               </div>
             </div>
           ))}
+
         </div>
       </div>
 
