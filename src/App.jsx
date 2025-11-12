@@ -24,7 +24,6 @@ function App() {
       })
     const newListActors = [...actors, ...actresses]
     setEveryActors(newListActors)
-
   }
 
   console.log(everyActors);
@@ -38,20 +37,20 @@ function App() {
         <button className="btn btn-dark" onClick={handleClick}>click me</button>
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
 
-          {actors.map(actor => (
-            <div key={actor.id} className="col">
-              <div className="actorsCard">
-                <img src={actor.image} alt={actor.name} />
-                <h4>{actor.name}</h4>
+          {everyActors.map(everyActor => (
+            <div key={everyActor.id} className="col">
+              <div className="everyActorsCard">
+                <img src={everyActor.image} alt={everyActor.name} />
+                <h4>{everyActor.name}</h4>
                 <p className="d-flex flex-column">
                   {/* anno nascita ed eventualmente di morte */}
-                  <span>Birth Year: {actor.birth_year} {actor.death_year ? `Death Year: ${actor.death_year}` : ''}</span>
+                  <span>Birth Year: {everyActor.birth_year} {everyActor.death_year ? `Death Year: ${everyActor.death_year}` : ''}</span>
                   {/* nazionalità */}
-                  <span>{actor.nationality}</span>
+                  <span>{everyActor.nationality}</span>
                   {/* biografia */}
-                  <span>{actor.biography}</span>
+                  <span>{everyActor.biography}</span>
                   {/* riconoscimenti */}
-                  <span>Awards: {actor.awards.join(', ')}</span>
+                  {/* <span>Awards: {everyActor.awards.join(', ')}</span> */}
                 </p>
               </div>
             </div>
